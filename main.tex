@@ -275,7 +275,7 @@ Adjacency matrix is $A(C_{n,k}) = \begin{bmatrix} A(C_{n}) & I_{n}\\
 I_{n} & A' \end{bmatrix}$
 So, $A(C_{n,k})\vec{x} = \lambda \vec{x}$ we get the equations (with $0 \leq j \leq n-1$):
 $$x_{j-1} + x_{j+1} + x_{n+j} = \lambda x_j \text{ where }j-1,j,j+1 \text{ are taken }\bmod n$$
-$$x_{j} + x_{n+k+j} + x_{2n-k+j} = \lambda x_j \text{ where }j \text{ are taken }\bmod n$$
+$$x_{j} + x_{n+k+j} + x_{2n-k+j} = \lambda x_j \text{ where }j \text{ is taken }\bmod n$$
 We show $A(C_{nr,k}) \vec{X_r} = \lambda \vec{X_r}$ for any $r \geq 1$ where:
 $$A(C_{nr,k}) = \begin{bmatrix} A(C_{nr}) & I_{nr}\\
 I_{nr} & A'' \end{bmatrix}$$
