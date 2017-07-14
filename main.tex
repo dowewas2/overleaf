@@ -155,7 +155,7 @@ The maximum nullity of a simple graph $G$, denoted $\M(G)$, is defined to be the
 \item Let $V$ be a finite set. A {\color{blue}\emph{simple graph}} $G=(V,E)$ is a pair of sets, such that $E$ is a set of 2 element subsets of $V$. The elements of $V$ are called {\color{blue}\emph{vertices}} and the elements of $E$ are called {\color{blue}\emph{edges}}. 
 \item Vertices $u$ and $v$ are {\color{blue}\emph{adjacent}} in $G$ if $uv \in E$. Let $v \in V$. A vertex $u$ is a {\color{blue}\emph{neighbor}} of $v$ if $uv \in E$. The {\color{blue}\emph{neighborhood}} of $v$, denoted by $N(v)$ is the set of neighbors of $v$.
 \item For a graph $G$, the {\color{blue}\emph{adjacency matrix}} of $G$, denoted $A(G)$ is a matrix $A(G) = [a(G)_{ij}]$ such that $a(G)_{ij}$ is 1 if $ij \in E$, and $a(G)_{ij}$ is zero otherwise. 
-\item For a graph $G$, the {\color{blue}\emph{set of symmetric matrices of $G$ over $\mathbb{R}$}}, denoted $\mathcal{S}(G)$,  is the set of matrices $A=[a_{ij}]$ such that $a_{ij}$ is non-zero if $ij\in E$, $a_{ij}$ is any number if $i=j$ and $a_{ij}$ is $0$ otherwise. 
+\item For a graph $G$, the {\color{blue}\emph{set of symmetric matrices of $G$ over $\mathbb{R}$}}, denoted $\mathcal{S}(G)$,  is the set of matrices $A=[a_{ij}]$ such that $a_{ij}$ is non-zero if $ij\in E$, $a_{ij}$ is any number if $i=j$ and $a_{ij}$ is zero otherwise. 
 \item The {\color{blue}\emph{minimum rank}} of $G$ is 
 \[
 \mr(G) := \min\{rank(A) \mid A \in \mathcal{S}(G)\}.
@@ -219,7 +219,7 @@ Z(G) = \min\{|S| : S\text{ is a zero forcing set of }G\}.
 \item {\bf Theorem}[AIM Minimum Rank]
 The zero forcing number provides an upper bound for the maximum nullity, $\M(G) \leq \Z(G)$, and therefore provides a lower bound on the minimum rank, $n-\Z(G) \leq \mr(G)$. 
 \item {\bf Theorem}[AIM Minimum Rank]
-$C_{n,1}$ =  $C_n \square P_2$ ($n-$Prism) for $n \geq 3$, $\quad\M(C_{n,1}) = \Z(C_{n,1}) = 4.$
+$C_n \square P_2$ ($n-$Prism) for $n \geq 3, \quad\M(C_n \square P_2) = \Z(C_n \square P_2) = 4.$
 \eit
 \end{block}
 
@@ -237,7 +237,7 @@ v_{n-1} \}
 E(C_{n,k}) = \{u_iu_{i+1},\, u_iv_i,\, v_jv_{j+k} \, |\, 0 \leq
 i,j
 \leq n-1\}
-\] where subscripts are taken modulo $n$.
+\] where subscripts are taken modulo $n$. [West]
 \begin{figure}[h!] 
 \centering
 \scalebox{0.9}{\includegraphics{genpetlabe.eps}}
@@ -252,12 +252,13 @@ The following block matrix is the adjacency matrix for the Generealized
 Petersen graph:
 \[
 \huge{A(C_{n,k}) = \begin{bmatrix} \huge{A(C_n)} & \huge{I_n}  \\
-\huge{I_n}  & \huge{A'}    
+\huge{I_n}  & \huge{A(C_{n})'}    
 \end{bmatrix}}
 \]
-where $I_n := n \times n \text{ identity matrix}$, $ A(C_n) := \text{ adjacency
-matrix of the outer cycle}$,and $A' := \text{ adjacency matrix of the inner
-cycle(s)}$
+where $I_n := n \times n $\text{ identity matrix}, $A(C_n) := $\text{ adjacency
+matrix of the outer cycle on }n \text{ vertices,}\\ 
+\text{and } $A(C_{n})' := $ \text{ adjacency matrix of the inner
+cycle(s) and is a matrix with ones in the }$k$\text{th and }\\$n-k$\text{th super and sub diagonals and zeroes elsewhere.}
 \end{block}
 
 \begin{block}{Eigenvalue Property of Generalized Petersen Graphs} 
@@ -267,33 +268,26 @@ Suppose $\lambda$ is an eigenvalue of the adjacency matrix of $C_{n,k}$ with mul
 \eit
 \end{block}
 
-\begin{block}{Proof-Sketch}
+\begin{block}{Sketch of Proof}
         
-Have $\lambda$ and associated vector $\vec{x}=[x_0, \ldots, x_{n-1}, x_{n}, \ldots, x_{2n-1}]^T$
-Adjacency matrix is $A(C_{n,k}) = \begin{bmatrix} A(C_{n}) & I_{n}\\
-I_{n} & A' \end{bmatrix}$
-So, $A(C_{n,k})\vec{x} = \lambda \vec{x}$ we get the equations (with $0 \leq j \leq n-1$):
+Suppose we have $\lambda$ and associated vector $\vec{x}=[x_0, \ldots, x_{n-1}, x_{n}, \ldots, x_{2n-1}]^T$
+with adjacency matrix $A(C_{n,k}) = \begin{bmatrix} A(C_{n}) & I_{n}\\
+I_{n} & A(C_n)' \end{bmatrix}.$\\
+Then, $A(C_{n,k})\vec{x} = \lambda \vec{x}$ we get the equations (with $0 \leq j \leq n-1$):
 $$x_{j-1} + x_{j+1} + x_{n+j} = \lambda x_j \text{ where }j-1,j,j+1 \text{ are taken }\bmod n$$
-$$x_{j} + x_{n+k+j} + x_{2n-k+j} = \lambda x_j \text{ where }j \text{ is taken }\bmod n$$
+$$x_{j} + x_{n+k+j} + x_{2n-k+j} = \lambda x_j \text{ where }j \text{ is taken }\bmod n.$$
 We show $A(C_{nr,k}) \vec{X_r} = \lambda \vec{X_r}$ for any $r \geq 1$ where:
 $$A(C_{nr,k}) = \begin{bmatrix} A(C_{nr}) & I_{nr}\\
-I_{nr} & A'' \end{bmatrix}$$
-$\vec{X_r} = [\underbrace{x_0, \ldots, x_{n-1}, \ldots, x_0, \ldots, x_{n-1}}_{r \text{ times }}, \underbrace{x_{n}, \ldots, x_{2n-1}, \ldots, x_{n}, \ldots, x_{2n-1}}_{r \text{ times }}]^T$
-
-$$\text{Immediate from zero forcing observation, AIM Minimum Rank, and previous lemma}$$
-\[
-2k+2 = \nul(A(C_{n,k}) - \lambda I) \leq \M(C_{n,k}) \leq \Z(C_{n,k}) \leq 2k+2
-\]
-$\text{Use observation:  For any }n \geq 3, \Z(C_{n,k}) \leq 2k + 2$.
-Find an eigenvalue of the adjacency matrices of $C_{15,2}$ and $C_{24,5}$ respectively so that the multiplicity of  each eigenvalue is $2k+2:$ $-2$ and $0$ respectively.
+I_{nr} & A(C_{nr})' \end{bmatrix}$$
+$$\vec{X_r} = [\underbrace{x_0, \ldots, x_{n-1}, \ldots, x_0, \ldots, x_{n-1}}_{r \text{ times }}, \underbrace{x_{n}, \ldots, x_{2n-1}, \ldots, x_{n}, \ldots, x_{2n-1}}_{r \text{ times }}]^T.$$
 \end{block}
 
-%\begin{block}{heading}
+% %\begin{block}{heading}
 
 
-%{\bf Question}  ?
+% %{\bf Question}  ?
 
-%\end{block}
+% %\end{block}
      
 
 \end{column}%2
@@ -312,7 +306,7 @@ Find an eigenvalue of the adjacency matrices of $C_{15,2}$ and $C_{24,5}$ respec
 \textbf{Sketch of Proof:}
 % \centering
 \begin{itemize}
-\item $S = \{v_0, u_0, \dots, u_{2k-1}, v_{2k-1}\}$ and apply the zero forcing rule.\\
+\item $S = \{v_0, u_0, \dots, u_{2k-1}, v_{2k-1}\}$ and apply the color change rule.\\
 \item $S_0 = S \cup \{v_1, \dots, v_{2k-2}\}$ is a subset of blue vertices
 after the first force.\\
 \item If $S_0 $ is a zero forcing set then $S$ is a zero forcing set, otherwise $S_{j+1} = S_j \cup \{u_{2k+j},v_{2k+j}\}$\\
@@ -333,32 +327,50 @@ after the first force.\\
         
 \begin{block}{Main Results}
 \bit
-\item[]{\bf Theorem:} For any $n \geq 3$ and $0 <  k  \leq \lfloor \frac{n-1}{2} \rfloor$, such that there is $\lambda \in spec(A(C_{n,k}))$ such that the multiplicity of $\lambda$ is  $2k+2$, we have $\M(C_{n,k}) = \Z(C_{n,k}) = 2k+2$.\\*[1cm]
+\item[]{\bf Theorem:} For any $n \geq 3$ and $0 <  k  \leq \frac{n-1}{2} $, such that there is $\lambda \in spec(A(C_{n,k}))$ such that the multiplicity of $\lambda$ is  $2k+2$, we have $\M(C_{n,k}) = \Z(C_{n,k}) = 2k+2$.
 
 \item[]{\bf Corollary:} $\M(C_{15r,2}) = \Z(C_{15r,2}) = 6$ and 
 $\M(C_{24r,5}) = \Z(C_{24r,5}) = 12$ for all $r \geq 1$.
 \eit
 \end{block}
 
-\begin{block}{Other Results}
-\bit
-\item Define {\color{blue}\emph{bat graphs}} as follows: Let $B_0$ be the graph given by a $C_4$ with a leaf appended to each of two non-adjacent vertices. This graph has $\M(B_0) = \Z(B_0) = 2$ with its adjacency matrix being of minimum rank and a minimum zero forcing set being given by one leaf and one degree 2 vertex. Call the degree 3 vertices $x_1$ and $x_2$, the degree 2 vertices $y_1$ and $y_2$, and the leaves $y_3$ and $y_4$. This is called the basic bat graph, and any graph constructed by a sequence of twinning operations applied to $x_1$ or $x_2$ is a bat graph.
-\item {\bf Theorem:}  $\M(B) = \Z(B)$ for every bat graph $B$.
-\item Define a {\color{blue}\emph{jewel graph}} to be a $K_{r,r}$ where one edge is deleted. Define an \emph{$s,r$-jewel necklace}, $J_{s,r}$, to be a cycle of jewel graphs adjoined appropriately by edges between vertices with deg$(v) = r-1$. In this process no more than $1$ edge should cause such vertices to become adjacent to one another. Let $s$ be the number of copies of jewels in the cycle and $r$ represents the degree of the vertices. Note that this graph remains bipartite and $r$-regular. By definition we require that $r \geq 3$ and $s \geq 2$ (otherwise we would be examining a cycle ($r=2$), $s$ copies of $P_2$ ($r=1$), or a $K_{r,r}$ ($s=1$), for which maximum nullity and zero forcing are known).Note that $n = \mid J_{s,r}\mid = 2sr$.
-\item {\bf Theorem:} The double jewel necklace $J_{2,r}$ has $\mr(J_{2,r})=6$ and $\M(J_{2,r}) = \Z(J_{2,r})$ for $r \geq 3$.
-\eit
+\begin{block}{Sketch of Proof}
+Immediately from the zero forcing observation (above), AIM Minimum Rank, and the eigenvalue property of GP graphs (left):
+\[
+2k+2 = \nul(A(C_{n,k}) - \lambda I) \leq \M(C_{n,k}) \leq \Z(C_{n,k}) \leq 2k+2.
+\]
+Then, use the above zero forcing observation and find an eigenvalue of the adjacency matrices of $C_{15,2}$ and $C_{24,5}$ respectively so that the multiplicity of  each eigenvalue is $2k+2$. These eigenvalues are $-2$ and $0$ respectively.
 \end{block}
+
+%\begin{block}{Other Results}
+%\bit
+%\item Define {\color{blue}\emph{bat graphs}} as follows: Let $B_0$ be the graph given by a $C_4$ with a leaf appended to each of two non-adjacent vertices. This graph has $\M(B_0) = \Z(B_0) = 2$ with its adjacency matrix being of minimum rank and a minimum zero forcing set being given by one leaf and one degree 2 vertex. Call the degree 3 vertices $x_1$ and $x_2$, the degree 2 vertices $y_1$ and $y_2$, and the leaves $y_3$ and $y_4$. This is called the basic bat graph, and any graph constructed by a sequence of twinning operations applied to $x_1$ or $x_2$ is a bat graph.
+%\item {\bf Theorem:}  $\M(B) = \Z(B)$ for every bat graph $B$.
+%\item Define a {\color{blue}\emph{jewel graph}} to be a $K_{r,r}$ where one edge is deleted. Define an \emph{$s,r$-jewel necklace}, $J_{s,r}$, to be a cycle of jewel graphs adjoined appropriately by edges between vertices with deg$(v) = r-1$. In this process no more than $1$ edge should cause such vertices to become adjacent to one another. Let $s$ be the number of copies of jewels in the cycle and $r$ represents the degree of the vertices. Note that this graph remains bipartite and $r$-regular. By definition we require that $r \geq 3$ and $s \geq 2$ (otherwise we would be examining a cycle ($r=2$), $s$ copies of $P_2$ ($r=1$), or a $K_{r,r}$ ($s=1$), for which maximum nullity and zero forcing are known).Note that $n = \mid J_{s,r}\mid = 2sr$.
+%\item {\bf Theorem:} The double jewel necklace $J_{2,r}$ has $\mr(J_{2,r})=6$ and $\M(J_{2,r}) = \Z(J_{2,r})$ for $r \geq 3$.
+%\eit
+%\end{block}
 
 \begin{block}{Future Work}
 \bit
-\item {\bf Conjecture:} Let $G =  C_{5\cdot 3^r,\frac{1}{2}(5\cdot3^r-1)}$
-	where $r \geq 0$. Then $\M(G) = \Z(G)$. 
+\item {\bf Conjecture:} Suppose $\lambda$ is an eigenvalue of $C_{s\cdot \ell, \lfloor \frac{(s \cdot \ell) - 1}{2} \rfloor }$ with multiplicity $m$, then $\lambda$ is an eigenvalue of $C_{s \cdot \ell^r, \lfloor \frac{(s \cdot \ell^r) - 1}{2} \rfloor}$ with multiplicity at least $m$, where $s \cdot \ell \geq 3$ and $r \geq 1$.
+\item {\bf Conjecture:} Let $G =  C_{5\cdot 3^r, \lfloor \frac{1}{2}((5\cdot3^r)-1) \rfloor}$ where $r \geq 0$. Then $\M(G) = 6 = \Z(G)$. 
+\item Find other subfamilies so that $\M = \Z$. 
+\item Develop tools to find the maximum nullity of all GP graphs.
 \eit
 \end{block}
 
-%\begin{block}{Proof}
-        
-% \end{block}
+\begin{block}{Commonly Known Generalized Petersen Graphs}
+\bit
+\item $C_{n,1}$ -  $C_n \square P_2$ ($n-$Prism) for $n \geq 3$, $\quad\M(C_{n,1}) = \Z(C_{n,1}) = 4$ [AIM Minimum Rank]
+\item $C_{5,2}$ - The Petersen graph,  $\hspace{1.9cm} \M(C_{5,2}) = \Z(C_{5,2}) = 5$ [AIM Minimum Rank]
+\item $C_{6,2}$ - The  D\"{u}rer  graph 
+\item $C_{8,3}$ - The M\"{o}bius - Kantor graph 
+\item $C_{10,2}$ - The Dodecahedron graph 
+\item $C_{10,3}$ - The Desargues graph  
+\item $C_{12,5}$ - The Nauru graph
+\eit
+\end{block}
 %%%%%%%%%%%%%%%%%%%%%%%
         
 
