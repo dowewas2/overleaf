@@ -294,11 +294,13 @@ $$\vec{X_r} = [\underbrace{x_0, \ldots, x_{n-1}, \ldots, x_0, \ldots, x_{n-1}}_{
 % \centering
 \begin{itemize}
 \item $S = \{v_0, u_0, \dots, u_{2k-1}, v_{2k-1}\}$ and apply the color change rule.\\
-\item $S_0 = S \cup \{v_1, \dots, v_{2k-2}\}$ is a subset of blue vertices
+\item $S_0 = S \cup \{v_1, \dots, v_{2k-2}\}$ is the set of blue vertices
 after the first force.\\
-\item If $S_0 $ is a zero forcing set then $S$ is a zero forcing set, otherwise $S_{j+1} = S_j \cup \{u_{2k+j},v_{2k+j}\}$\\
-\item By repeating this process $S\subseteq S_0 \subseteq S_1 \subseteq \cdots
-\subseteq S_{n-2k}$. Since $S_{n-2k} = V(G)$, $S_{n-2k}$ is a zero forcing set and so is $S$.
+\textbf{Note:} If $S_0 $ is a zero forcing set then $S$ is a zero forcing set
+and we are done.
+\item Define $S_{j+1} = S_j \cup \{u_{2k+j},v_{2k+j}\}$ which implies
+$S\subseteq S_0 \subseteq S_1 \subseteq \cdots \subseteq S_{n-2k}$. 
+\item Since $S_{n-2k} = V(G)$ and $V(G)$ is a zero forcing set so is $S$.
 \end{itemize}
 
 \end{block}
